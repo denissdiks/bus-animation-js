@@ -8,6 +8,12 @@ function draw(){
     drawShape(ctx, 0 + startPos, 100);
 
     ctx.restore();
+
+    //****TRanslating condition *****/
+    if (tx > 1400) {
+        tx = 1;
+    }
+    tx += 4;
 }
 
 function loop(timestamp){
@@ -25,8 +31,8 @@ let tx = 1;
 
 drawShape(ctx, 0, 100); // bus body
 
-drawWheel();
-drawWheel();
+//drawWheel();
+//drawWheel();
 
 window.requestAnimationFrame(loop);
 
