@@ -43,6 +43,7 @@ let startPos = -500;
 let toRadians = Math.PI / 180;
 let tx = 1;
 let rx = 0;
+const segSize = 45; // segment size on the wheel
 
 window.requestAnimationFrame(loop);
 
@@ -74,6 +75,30 @@ function drawWheel(posX, posY) {
     ctx.beginPath();
     ctx.arc(posX, posY, 30, 0 * toRadians, 360 * toRadians);
     ctx.fillStyle = 'black';
+    ctx.fill();
+    ctx.stroke();
+
+    for (let index = 1; index <= 360 / segSize; index++) {
+        if (index % 2) {
+            color = 'white';
+        } else
+            color = 'darkGrey';
+
+        drawSegment(posX, posY, 22, (index - 1) * 45 * toRadians, index * 45 * toRadians, color);
+    }
+
+    ctx.beginPath();
+    ctx.arc(posX, posY, 10, 0, 360 * toRadians);
+    ctx.fill();
+    ctx.stroke();
+}
+
+function drawSegment(posX, posY, rad, from, to, color) {
+    ctx.beginPath();
+    ctx.lineTo(posX, posY);
+    ctx.arc(posX, posY, rad, from, to);
+    ctx.lineTo(posX, posY);
+    ctx.fillStyle = color;
     ctx.fill();
     ctx.stroke();
 }
