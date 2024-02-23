@@ -12,14 +12,22 @@ function draw(){
     //wheel 1
     ctx.save();
 
-    drawWheel(150, 470);
+    ctx.translate(150 + tx + startPos, 470, 0);
+    ctx.rotate(rx);
+    ctx.translate(-150 - startPos, -470, 0);
+
+    drawWheel(150 + startPos, 470);
 
     ctx.restore();
 
     //wheel 2
     ctx.save();
 
-    drawWheel(335, 470);
+    ctx.translate(335 + tx + startPos, 470, 0);
+    ctx.rotate(rx);
+    ctx.translate(-335 - startPos, -470, 0);
+    
+    drawWheel(335 + startPos, 470);
 
     ctx.restore();
 
@@ -27,7 +35,9 @@ function draw(){
     if (tx > 1400) {
         tx = 1;
     }
-    tx += 4; // bus translation
+
+    tx += 4; // bus translation increment
+    rx += 5 * toRadians;  // wheels rotation increment
 }
 
 function loop(timestamp){
@@ -41,8 +51,8 @@ let ctx = document.querySelector("canvas").getContext("2d");
 let startPos = -500;
 
 let toRadians = Math.PI / 180;
-let tx = 1;
-let rx = 0;
+let tx = 1;  // bus translation
+let rx = 0;  // wheels rotation
 const segSize = 45; // segment size on the wheel
 
 window.requestAnimationFrame(loop);
