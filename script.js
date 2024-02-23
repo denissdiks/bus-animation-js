@@ -9,11 +9,25 @@ function draw(){
 
     ctx.restore();
 
+    //wheel 1
+    ctx.save();
+
+    drawWheel(150, 470);
+
+    ctx.restore();
+
+    //wheel 2
+    ctx.save();
+
+    drawWheel(335, 470);
+
+    ctx.restore();
+
     //****TRanslating condition *****/
     if (tx > 1400) {
         tx = 1;
     }
-    tx += 4;
+    tx += 4; // bus translation
 }
 
 function loop(timestamp){
@@ -28,11 +42,7 @@ let startPos = -500;
 
 let toRadians = Math.PI / 180;
 let tx = 1;
-
-drawShape(ctx, 0, 100); // bus body
-
-//drawWheel();
-//drawWheel();
+let rx = 0;
 
 window.requestAnimationFrame(loop);
 
@@ -58,4 +68,12 @@ function drawShape(ctx, xoff, yoff) {
     ctx.stroke();
     ctx.lineWidth = 1;
     ctx.strokeStyle = 'black';
+}
+
+function drawWheel(posX, posY) {
+    ctx.beginPath();
+    ctx.arc(posX, posY, 30, 0 * toRadians, 360 * toRadians);
+    ctx.fillStyle = 'black';
+    ctx.fill();
+    ctx.stroke();
 }
