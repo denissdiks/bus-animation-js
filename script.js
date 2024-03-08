@@ -14,22 +14,22 @@ function draw(){
     //wheel 1
     ctx.save();
 
-    ctx.translate(150 + tx + startPos, 470, 0);
+    ctx.translate(135 + tx + startPos, 470, 0);
     ctx.rotate(rx);
-    ctx.translate(-150 - startPos, -470, 0);
+    ctx.translate(-135 - startPos, -470, 0);
 
-    drawWheel(150 + startPos, 470);
+    drawWheel(135 + startPos, 470);
 
     ctx.restore();
 
     //wheel 2
     ctx.save();
 
-    ctx.translate(335 + tx + startPos, 470, 0);
+    ctx.translate(490 + tx + startPos, 470, 0);
     ctx.rotate(rx);
-    ctx.translate(-335 - startPos, -470, 0);
+    ctx.translate(-490 - startPos, -470, 0);
     
-    drawWheel(335 + startPos, 470);
+    drawWheel(490 + startPos, 470);
 
     ctx.restore();
 
@@ -86,7 +86,7 @@ function drawShape(ctx, xoff, yoff) {
 
 function drawWheel(posX, posY) {
     ctx.beginPath();
-    ctx.arc(posX, posY, 30, 0 * toRadians, 360 * toRadians);
+    ctx.arc(posX, posY, 40, 0 * toRadians, 360 * toRadians);
     ctx.fillStyle = 'black';
     ctx.fill();
     ctx.stroke();
@@ -97,7 +97,7 @@ function drawWheel(posX, posY) {
         } else
             color = 'darkGrey';
 
-        drawSegment(posX, posY, 22, (index - 1) * 45 * toRadians, index * 45 * toRadians, color);
+        drawSegment(posX, posY, 28, (index - 1) * 45 * toRadians, index * 45 * toRadians, color);
     }
 
     ctx.beginPath();
