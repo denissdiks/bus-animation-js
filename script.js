@@ -4,8 +4,10 @@ function draw(){
     //bus body
     ctx.save();
 
-    ctx.translate(tx , 0, 0);
-    drawShape(ctx, 0 + startPos, 100);
+    ctx.scale(-1, 1);
+    ctx.translate(-tx , 0, 0);
+    ctx.drawImage(busImg, 450 + startPos, 140, busImg.width*0.2, busImg.height*0.2);
+    //drawShape(ctx, 0 + startPos, 100);
 
     ctx.restore();
 
@@ -47,6 +49,7 @@ function loop(timestamp){
 
 /************* MAIN Program Entry point **************/
 let ctx = document.querySelector("canvas").getContext("2d");
+const busImg = document.getElementById("bus");
 
 let startPos = -500;
 
